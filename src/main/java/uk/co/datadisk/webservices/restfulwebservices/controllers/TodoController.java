@@ -35,7 +35,6 @@ public class TodoController {
         if(todo != null) {
             return ResponseEntity.noContent().build();
         }
-
         return ResponseEntity.notFound().build();
     }
 
