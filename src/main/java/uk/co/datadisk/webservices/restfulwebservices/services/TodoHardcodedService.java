@@ -19,8 +19,18 @@ public class TodoHardcodedService {
         todos.add(new Todo(++idCounter, "Paul Valle", "Learn to program in JavaScript", new Date(119, 11, 1), false));
     }
 
+    // CRUD Operations
     public List<Todo> findAll() {
         return todos;
+    }
+
+    public Todo findById(long id) {
+        for(Todo todo: todos) {
+            if(todo.getId() == id){
+                return todo;
+            }
+        }
+        return null;
     }
 
     public Todo deleteById(long id) {
@@ -37,23 +47,16 @@ public class TodoHardcodedService {
     }
 
     public Todo save(Todo todo) {
+        //CREATE
        if (todo.getId() == -1 || todo.getId() == 0){
            todo.setId(++idCounter);
            todos.add(todo);
        } else {
+           // UPDATE
             deleteById(todo.getId());
             todos.add(todo);
        }
 
        return todo;
-    }
-
-    public Todo findById(long id) {
-        for(Todo todo: todos) {
-            if(todo.getId() == id){
-                return todo;
-            }
-        }
-        return null;
     }
 }
