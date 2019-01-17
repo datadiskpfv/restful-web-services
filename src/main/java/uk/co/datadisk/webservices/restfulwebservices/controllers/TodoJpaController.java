@@ -22,7 +22,7 @@ public class TodoJpaController {
     // CRUD Operations
     // CREATE operation
     @PostMapping("/jpa/users/{username}/todos")
-    public ResponseEntity<Void> updateTodo( @PathVariable String username,
+    public ResponseEntity<Void> createTodo( @PathVariable String username,
                                             @RequestBody Todo todo ) {
         System.out.println("Creating Todo.......");
         todo.setUsername(username);
@@ -62,7 +62,6 @@ public class TodoJpaController {
     // DELETE operation
     @DeleteMapping("/jpa/users/{username}/todos/{id}")
     public ResponseEntity<Void> deleteTodo(@PathVariable String username, @PathVariable long id){
-
         todoJpaRepository.deleteById(id);
         return ResponseEntity.noContent().build();
     }
